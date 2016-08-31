@@ -1,0 +1,63 @@
+<h1>File Upload</h1>
+
+<h2>File</h2>
+<%= flash[:notice]%>
+当前目录为：<%= @dir %> &nbsp;&nbsp;<%= link_to "上一级","/upload?id=#{@go_up}"%>
+<%= form_tag "/upload?id=#{@dir}",method: :post do %>
+    <input type="text" name="dir_name">
+    <input type="submit" name="submit" value="在当前目录下创建目录">
+<% end %>
+<hr>
+<!-- 上传单个文件  -->
+<%#= form_tag "/upload/", :multipart => true do %>
+  <!-- html写法-->
+  <!--     
+  <input type="file" name="file">
+  <input type="hidden" value="<%= @dir %>" name="current_dir">
+  <input type="submit" name="submit" value="上传文件到当前目录"> 
+  -->
+
+  <!-- rails代码 -->
+  <%#= file_field_tag "file" -%>
+  <%#= hidden_field_tag(:current_dir, @dir) %>
+  <%#= submit_tag "上传文件到当前目录"%>
+
+<%# end %>
+
+<!-- 上传多个文件 -->
+<%= form_tag "/upload?id=#{@dir}",method: :post, multipart: true do %>
+  <!-- html写法 -->
+  <input type="file" name="files[]" multiple="multiple">
+  <input type="submit" name="submit" value="上传文件到当前目录">
+
+  <!-- rails写法 -->
+  <%#= file_field_tag "files[]", :multiple => true%>
+  <%#= hidden_field_tag(:current_dir, @dir) %>
+  <%#= submit_tag "上传文件到当前目录"%>
+<% end %>
+
+(文件名称中不要带有特殊字符！)
+<hr>
+子目录：
+<ul id="dir_list">
+  <% @dir_list.each do |d| %>
+  <li><span><a href="/upload?id=<%= @dir %><%= d %>"><%= d %></a></span>&nbsp;&nbsp;
+    <span><%= link_to "delete", "/delete_file?id=#{@dir+d}", method: :delete, data: { confirm: "Are you sure?" } %></span>
+  </li>
+  <% end %>
+</ul>
+文件:
+<ul id="file_list">
+  <% @file_list.each do |f| %>
+  <li>
+    <span><a href="<%= @dir.split('/').last.gsub('public','')+'/'+f.to_s %>" target="_blank"><%= f %></a></span>
+    <span><%= link_to "delete", "/delete_file?id=#{@dir+f}", method: :delete, data: { confirm: "Are you sure?" } %></span>
+  </li>
+  <% end %>
+
+</ul>
+<style type="text/css">
+    form {
+        margin-bottom: 0;
+    }
+</style>
