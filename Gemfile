@@ -29,6 +29,7 @@ gem 'oneapm_rpm'
 gem 'sunspot'
 gem 'sunspot_rails'
 gem 'redis'
+
 gem 'rest-client'
 # gem 'aliyun-oss'
 
