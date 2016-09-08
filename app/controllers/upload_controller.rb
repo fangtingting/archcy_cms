@@ -1,6 +1,7 @@
 # 文件与文件夹处理
 class UploadController < ApplicationController
-  include OperateDocument
+  # 文件及文件夹操作
+  include OperateFiles
 
   # 显示public目录下的所有文件以及文件夹
   def index
@@ -36,9 +37,13 @@ class UploadController < ApplicationController
     if params[:files].present?
       begin
         params[:files].each do |file|
-          new_filename=upload_file(file,@dir)
+          # 上传并命名文件
+          # new_filename=upload_file(file,@dir)
           # 解压文件
-          decompress(@dir+new_filename,@dir) if File.extname(file.original_filename)=~/zip/
+          # decompress(@dir+new_filename,@dir) if File.extname(file.original_filename)=~/zip/
+          
+          # 上传不重名文件
+          upload_original_file(file,@dir)
         end
         flash[:notice] = "上传成功"
       rescue => e

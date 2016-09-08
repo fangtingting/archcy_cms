@@ -1,5 +1,5 @@
 # encoding: utf-8
-module OperateDocument
+module OperateFiles
   extend ActiveSupport::Concern
 
   included do
@@ -46,6 +46,18 @@ module OperateDocument
       f.write(file.read)
     end
     return new_filename
+  end
+
+  # 上传文件但是不重名
+  def upload_original_file(file,path,max_size=4096)
+    raise "文件太大" if file.size.to_f/1024 > max_size
+    path += "/" unless path.end_with?("/")
+    # 目录不存在创建目录
+    Dir.mkdir(path) unless File.exist?(path)
+    raise "文件已经存在!" if File.exist?("#{path}#{file.original_filename}")
+    File.open("#{path+file.original_filename}", "wb") do |f|
+      f.write(file.read)
+    end
   end
 
   # 解压zip文件到指定目录
