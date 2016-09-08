@@ -92,10 +92,49 @@ class QyWechat
   end
 
   # 主动方式调用
-  # 管理通讯录:op_obj(department、user、tag), action(create、update、list)
+  # 管理通讯录:op_obj(department、user、tag), action(create、update、delete、get、list)
   def op_contacts(op_obj,action,options={})
     url = "https://qyapi.weixin.qq.com/cgi-bin/#{op_obj}/#{action}?access_token=#{self.access_token}"
+    if %w(create update).include?(action)
+      response = RestClient.post(url,:params => options)
+    else
+      options.each{|key,value| url += "&#{key}=#{value}"}
+      response = RestClient.get(url)
+    end
+    result = JSON.load(response.body)
+  end
 
+  # 素材管理
+  # action(add_mpnews、add_material、get、del、update_mpnews、batchget)
+  def op_media(action,option={})
+    url = "https://qyapi.weixin.qq.com/cgi-bin/material/#{action}?access_token=#{self.access_token}"
+    if %w(add_mpnews add_material).include?(action)
+      response = RestClient.post(url,options)
+    else
+      options.each{|key,value| url += "&#{key}=#{value}"}
+      response = RestClient.get(url)
+    end
+    result = JSON.load(response.body)
+  end
+
+  # 临时素材管理(包含缩略图)
+  # action(get,upload),如果是上传文件,options={:media => File.new(file_path,'rb'),:multiple => true}
+  def op_thumb_media(action,type,options={})
+    url = "https://qyapi.weixin.qq.com/cgi-bin/media/#{action}?access_token=#{self.access_token}&type=#{type}"
+    if action == "get"
+      options.each{|key,value| url += "&#{key}=#{value}"}
+      response = RestClient.get(url)
+    else
+      response = RestClient.post(url,options)
+    end
+    result = JSON.load(response.body)
+  end
+
+  # 发送消息
+  def send_messages(options={})
+    url = "https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=#{self.access_token}"
+    response = RestClient.post(url,options)
+    result = JSON.load(response.body)
   end
 
 

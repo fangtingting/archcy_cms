@@ -1,7 +1,7 @@
 # 微信
 class WechatController < ApplicationController
 
-  # 回调url
+  # 回调url,接收消息
   def wx_emp
     wechat = QyWechat.new
     wechat.apply_token = 'CYnThmqmahR'
