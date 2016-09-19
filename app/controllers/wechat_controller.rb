@@ -2,7 +2,7 @@
 class WechatController < ApplicationController
 
   # 回调url,接收消息
-  def wx_emp
+  def qywx_emp
     wechat = QyWechat.new
     wechat.apply_token = 'CYnThmqmahR'
     wechat.encoding_aes_key = 'HGm36taLqNBvwLaJAMLGY8HNE2kQxyK4wQaPBzYEjdj'
@@ -16,9 +16,9 @@ class WechatController < ApplicationController
       status,result = wechat.verify_url(params[:msg_signature],params[:timestamp],params[:nonce],params[:xml][:Encrypt])
       if status == 200
         # 生成xml密文发给微信
-        render :status => status, :text => result
       end
       render :status => status, :text => result
+      
     end
   end
 

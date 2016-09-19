@@ -35,9 +35,9 @@ class QyWechat
   end
 
   # 解密
-  def decrypt(encrypt)
+  def decrypt(encrypt_msg)
     # 使用BASE64对密文进行解码
-    text = Base64.decode64(encrypt)
+    text = Base64.decode64(encrypt_msg)
     aes_key=Base64.decode64(self.encoding_aes_key + '=')
     text = handle_cipher(:decrypt, aes_key, text)
     result = decode_padding(text)
@@ -71,9 +71,8 @@ class QyWechat
 
   # 加密？？(还需测试)
   def encrypt(postxml)
-    convertor = Iconv.new('UTF-8//IGNORE', 'US-ASCII')
     aes_key=Base64.decode64(self.encoding_aes_key + '=')
-    text = convertor.iconv(postxml)
+    text = postxml.force_encoding('ASCII-8BIT')
     random  = SecureRandom.hex(8)
     msg_len = [text.length].pack("N")
     text = "#{random}#{msg_len}#{text}#{CORPID}"
