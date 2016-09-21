@@ -1,0 +1,7 @@
+Article:
+  table:
+    - 文章链接
+    - 文章标题
+  list:
+    - short_name
+    - title

@@ -60,7 +60,7 @@ module OperateFiles
     end
   end
 
-  # 解压zip文件到指定目录
+  # 解压zip文件到指定目录，返回解压后的所有文件
   # zip_filename 压缩文件名, decompress_path 解压到目录路径
   def decompress(zip_filename,decompress_path)
     zip=Zip::ZipFile.new(zip_filename)

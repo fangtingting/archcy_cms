@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
   # rake routes可以查看路由帮助
-  resources :upload
+  resources :upload,:articles
 
   # 因为文件名有后缀不能设置为id,所以要为删除设置新的路由
   match 'delete_file',to: 'upload#destroy',via: [:delete]
