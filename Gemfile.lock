@@ -83,7 +83,6 @@ GEM
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
-    oneapm_rpm (1.3.7)
     pkg-config (1.1.7)
     pr_geohash (1.0.0)
     rack (1.6.4)
@@ -182,7 +181,6 @@ DEPENDENCIES
   mini_magick
   minitest
   mysql2 (~> 0.3.18)
-  oneapm_rpm
   radius
   rails (= 4.2.6)
   redis

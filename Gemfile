@@ -23,7 +23,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'mini_magick'
 gem 'radius'
 gem 'will_paginate'
-gem 'oneapm_rpm'
+# gem 'oneapm_rpm'
 
 # 全文搜索
 gem 'sunspot'
