@@ -42,7 +42,7 @@ class UploadController < ApplicationController
           # 解压文件
           # decompress(@dir+new_filename,@dir) if File.extname(file.original_filename)=~/zip/
           
-          # 上传不重名文件
+          # 上传不重命名文件
           upload_original_file(file,@dir)
         end
         flash[:notice] = "上传成功"

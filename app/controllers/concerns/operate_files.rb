@@ -48,7 +48,7 @@ module OperateFiles
     return new_filename
   end
 
-  # 上传文件但是不重名
+  # 上传文件但是不重命名
   def upload_original_file(file,path,max_size=4096)
     raise "文件太大" if file.size.to_f/1024 > max_size
     path += "/" unless path.end_with?("/")
