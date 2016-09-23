@@ -6,7 +6,7 @@ class Ckeditor::PicturesController < ActionController::Base
     path += "#{this.id}/" if this.present?
     begin
       newfile_name=upload_file(params[:upload],path) if params[:upload]
-      render text: '上传成功'
+      render text: '上传成功' if 
     rescue Exception => e
       render text: e
     end

@@ -1,3 +1,30 @@
+<span id="content">你好吗</span>
+<span class="copyed-info" style="color:red"></span>
+<%= link_to "复制","javascript:void(0)",id: "copy_content"%>
+
 <%=Article.list_fields%>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#copy_content").zclip({
+    path: '<%=asset_path("ZeroClipboard.swf")%>',
+    copy: function() {
+      console.log($("#content").text());
+      return $("#content").text();
+    },
+    beforeCopy: function() {
+      return $('.copyed-info').remove();
+    },
+    afterCopy: function() {
+      $("#content").after('<span class="copyed-info" style="color:red">已复制</span>');
+      return setTimeout(function() {
+        return $('.copyed-info').remove();
+      }, 2000);
+    }
+  });
+});
+
+
+</script>
 
 
