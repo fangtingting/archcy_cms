@@ -1,3 +1,0 @@
-class Ckeditor::Picture
-
-end

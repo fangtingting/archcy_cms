@@ -1,0 +1,22 @@
+<script type="text/javascript">
+var CKEditorFuncNum = $.QueryString["CKEditorFuncNum"];
+var CKEditorName = $.QueryString["CKEditor"];
+var CKEDITOR = window.opener.CKEDITOR;
+var EDITOR = CKEDITOR.instances[CKEditorName];
+</script>
+
+<div id="fileupload" class="gal-holder">
+  <div class="gal-item">
+    <div class="fileupload-button gal-upload-holder">
+      <a class="add" href="javascript:void(0)">上传</a>
+    </div>
+  </div>
+  <div class="fileupload-list">
+    <%@files.each do |file_name|%>
+    <div>
+      <img src="<%=@relative_path+file_name%>" width="80px" height="80px" />
+      <%= link_to "delete", picture_path("#{Rails.root.to_s}/public#{@relative_path+file_name}"), method: :delete, data: { confirm: "Are you sure?" } %>
+    </div>
+    <%end%>
+  </div>
+</div>

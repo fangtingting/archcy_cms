@@ -1,5 +1,5 @@
 <h1>File Upload</h1>
-
+<%=params[:controller]%><%=params[:action]%>
 <h2>File</h2>
 <%= flash[:notice]%>
 当前目录为：<%= @dir %> &nbsp;&nbsp;<%= link_to "上一级","/upload?id=#{@go_up}"%>

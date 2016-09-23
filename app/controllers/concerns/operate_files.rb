@@ -77,10 +77,4 @@ module OperateFiles
     filenames
   end
 
-  # 文件中文乱码问题
-  def convert_filename(filename="")
-    convertor=Iconv.new('UTF-8//IGNORE', 'GB2312')
-    convertor.iconv(filename)
-  end
-
 end
