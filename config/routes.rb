@@ -11,6 +11,9 @@ Rails.application.routes.draw do
 
   # 因为文件名有后缀不能设置为id,所以要为删除设置新的路由
   match 'delete_file',to: 'upload#destroy',via: [:delete]
+    
+  post 'ckeditor_upload_pic', to: 'ckeditor/pictures#upload_pic'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

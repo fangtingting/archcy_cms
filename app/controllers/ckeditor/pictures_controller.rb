@@ -34,4 +34,14 @@ class Ckeditor::PicturesController < ActionController::Base
     @lang_code = params[:langCode]
   end
 
+  def upload_pic
+    path = "#{Rails.root.to_s}/public/ckeditor/pictures/"
+    begin
+      newfile_name=upload_file(params[:file],path) if params[:file]
+      render text: '/ckeditor/pictures/'+newfile_name
+    rescue => e
+      render text: e
+    end
+  end
+
 end
