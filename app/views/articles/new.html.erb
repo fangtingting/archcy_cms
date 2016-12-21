@@ -5,8 +5,8 @@
 <script>
 window.onload=function(){
 
-// CKEDITOR.instances["editor1"].on("paste", Paste);
-CKEDITOR.instances["editor1"].on('instanceReady', function (e) { 
+CKEDITOR.on('instanceReady', function (e) {
+
   if(e.editor.document.$.addEventListener){
     //监听CKEditor里面的document对象粘贴事件。 
    e.editor.document.$.addEventListener('paste',Paste,false);
@@ -17,7 +17,7 @@ CKEDITOR.instances["editor1"].on('instanceReady', function (e) {
 }
 
 function UploadFile(file){
-  console.log(file);
+  // console.log(file);
   var reader = new FileReader();
   // 读取文件对象，将文件读取为DataUrl
   reader.readAsDataURL(file);
@@ -38,7 +38,8 @@ function UploadFile(file){
       var img = xhr.responseText;
       // console.log(img); 
       var element = CKEDITOR.dom.element.createFromHtml("<img src='"+img+"'>");
-      CKEDITOR.instances.editor1.insertElement( element );  
+      CKEDITOR.instances.editor1.insertElement( element );
+      // editor.append("<img src='"+img+"'>")  
     }
 
   }
@@ -47,6 +48,7 @@ function UploadFile(file){
 
 //查找box元素,检测当粘贴时候,
 function Paste(e) {
+  console.log(e.target);
   console.log(e.clipboardData);
   //判断是否是粘贴图片
   if (e.clipboardData && e.clipboardData.items && e.clipboardData.items[0] && e.clipboardData.items[0].type.indexOf('image') > -1) 

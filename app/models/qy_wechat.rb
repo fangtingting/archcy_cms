@@ -95,7 +95,7 @@ class QyWechat
   def op_contacts(op_obj,action,options={})
     url = "https://qyapi.weixin.qq.com/cgi-bin/#{op_obj}/#{action}?access_token=#{self.access_token}"
     if %w(create update).include?(action)
-      response = RestClient.post(url,:params => options)
+      response = RestClient.post(url, options)
     else
       options.each{|key,value| url += "&#{key}=#{value}"}
       response = RestClient.get(url)
