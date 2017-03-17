@@ -1,3 +1,4 @@
+# 企业微信api调用，具体用法参照bin/scripts/wx_test.rb
 class QyWechat
 
   CORPID = "wxeb9c2ddbb4858794"
@@ -5,8 +6,7 @@ class QyWechat
   TOKEN_URL = "https://qyapi.weixin.qq.com/cgi-bin/gettoken"
   BLOCK_SIZE = 32
 
-  attr_accessor :access_token
-  attr_accessor :apply_token, :encoding_aes_key
+  attr_accessor :access_token,:apply_token, :encoding_aes_key 
 
   def initialize(*args)
     args = {:corpid => CORPID , :corpsecret => CORPSECRET}
