@@ -34,9 +34,8 @@ gem 'radius'
 # 分页
 gem 'will_paginate'
 # gem 'will_paginate-bootstrap'
-# gem 'ckeditor'
+
 gem 'ckeditor'
-gem 'aliyun-oss'
 # gem 'oneapm_rpm'
 
 # 搜索表单
@@ -66,6 +65,9 @@ gem 'haml-rails'
 
 # 日历
 gem 'fullcalendar-rails'
+
+# 使用puma启动程序，注释掉就默认使用WEBrick启动
+gem 'puma'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
