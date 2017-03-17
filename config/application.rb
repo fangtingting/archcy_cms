@@ -5,6 +5,8 @@ require 'rails/all'
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
+# 只加载当前环境的gem
+# Bundler.require(:default, Rails.env)
 
 module ArchcyCms
   class Application < Rails::Application

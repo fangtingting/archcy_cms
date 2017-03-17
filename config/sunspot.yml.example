@@ -1,0 +1,25 @@
+production:
+  solr:
+    hostname: in4-solr
+    port: 8080
+    log_level: WARNING
+    path: /solr
+    auto_commit_after_request: true
+    # read_timeout: 2
+    # open_timeout: 0.5
+
+development:
+  solr:
+    hostname: 192.168.1.27
+    port: 8989
+    log_level: INFO
+    path: /solr/in4
+    auto_commit_after_request: false
+
+test:
+  solr:
+    hostname: localhost
+    port: 8981
+    log_level: WARNING
+    path: /solr/test
+    

@@ -15,8 +15,8 @@
 /log/*
 !/log/.keep
 /tmp
-.ruby-version
 config/database.yml
 db/schema.rb
 config/qywx_token.yml
 /public/*
+Gemfile.lock

@@ -1,5 +1,5 @@
 # rails2:script/rails runner script/wx_test.rb
-# rails3以上：rails runner bin/wx_test.rb
+# rails3以上：rails runner bin/scripts/wx_test.rb
 # 
 # 操作通讯录
 # wechat=QyWechat.new

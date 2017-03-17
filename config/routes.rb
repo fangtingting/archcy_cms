@@ -64,3 +64,7 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 end
+
+# 加载某个路径下的路由
+# handle = Rails.env.production? ? method(:require) : method(:load)
+# Dir.glob(File.join(Rails.root, 'config', 'routes', '*.rb'), &handle)
