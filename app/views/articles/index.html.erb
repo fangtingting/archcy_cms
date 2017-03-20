@@ -1,11 +1,20 @@
+<script type="text/javascript" src="/javascripts/clipboard.min.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.zclip.js"></script>
 <span id="content">你好吗</span>
 <span class="copyed-info" style="color:red"></span>
 <%= link_to "复制","javascript:void(0)",id: "copy_content"%>
 
 <%=Article.list_fields%>
+<div>
+  <p>clipboard.js也可以实现复制黏贴</p>
+  <span style="cursor:pointer;" class="btn" title='点击复制号码' data-clipboard-text="号码" onclick="copy(this)">复制号码</span><span style="color:red;display: none;" id="zero_tip">已复制！</span>
+</div>
+
+
 
 <script type="text/javascript">
 $(document).ready(function(){
+  var clipboard = new Clipboard('.btn'); 
   $("#copy_content").zclip({
     path: '<%=asset_path("ZeroClipboard.swf")%>',
     copy: function() {
@@ -23,6 +32,12 @@ $(document).ready(function(){
     }
   });
 });
+
+function copy(obj){
+  $(obj).next().show();
+  setTimeout(function(){$(obj).next().hide()},500);
+
+}
 
 
 </script>
