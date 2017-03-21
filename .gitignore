@@ -20,3 +20,4 @@ db/schema.rb
 config/qywx_token.yml
 /public/*
 Gemfile.lock
+config/ymls/qywx_token.yml

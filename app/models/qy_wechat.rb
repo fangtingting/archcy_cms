@@ -8,17 +8,18 @@ class QyWechat
 
   attr_accessor :access_token,:apply_token, :encoding_aes_key 
 
-  def initialize(*args)
-    args = {:corpid => CORPID , :corpsecret => CORPSECRET}
+  def initialize(args={})
     qy_token=YAML.load_file(Rails.root.to_s + '/config/ymls/qywx_token.yml')
     if (qy_token["expires_time"]+7200) < Time.now
-      response= RestClient.get(TOKEN_URL,:params => args)
+      response= RestClient.get(TOKEN_URL,{params: {corpid: CORPID ,corpsecret: CORPSECRET}})
       tmp=response.body ? JSON.load(response.body) : {}
       tmp["expires_time"]=Time.now
       File.open(Rails.root.to_s + '/config/ymls/qywx_token.yml','w'){|file| YAML.dump(tmp,file)}
       qy_token=YAML.load_file(Rails.root.to_s + '/config/ymls/qywx_token.yml')
     end
     self.access_token = qy_token["access_token"]
+    self.apply_token = args[:apply_token]
+    self.encoding_aes_key = args[:encoding_aes_key]
   end
 
   # 应用回调验证,返回明文的echostr跟status
