@@ -8,4 +8,5 @@ class ApplicationController < ActionController::Base
   #   super
   #   ur=UsersRequest.create(user_id: current_user.try(:id),url: request.url,time: (Time.now-time))
   # end
+
 end

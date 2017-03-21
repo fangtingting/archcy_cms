@@ -1,30 +1,29 @@
-== README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
-
 config文件下的ymls存放一些配置文件
+
+<!-- 上传单个文件  -->
+<%= form_tag "/upload/", :multipart => true do %>
+  <!-- html写法-->
+  <!--     
+  <input type="file" name="file">
+  <input type="hidden" value="<%= @dir %>" name="current_dir">
+  <input type="submit" name="submit" value="上传文件到当前目录"> 
+  -->
+
+  <!-- rails代码 -->
+  <%= file_field_tag "file" -%>
+  <%= hidden_field_tag(:current_dir, @dir) %>
+  <%= submit_tag "上传文件到当前目录"%>
+
+<% end %>
+
+<!-- 上传多个文件 -->
+<%= form_tag "/upload?id=#{@dir}",method: :post, multipart: true do %>
+  <!-- html写法 -->
+  <input type="file" name="files[]" multiple="multiple">
+  <input type="submit" name="submit" value="上传文件到当前目录">
+
+  <!-- rails写法 -->
+  <%= file_field_tag "files[]", :multiple => true%>
+  <%= hidden_field_tag(:current_dir, @dir) %>
+  <%= submit_tag "上传文件到当前目录"%>
+<% end %>

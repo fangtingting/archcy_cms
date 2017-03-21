@@ -1,0 +1,37 @@
+// 目录管理
+%div= flash[:notice]
+%h3 File Upload
+%div 
+  当前目录为: 
+  = @dir
+  &nbsp;&nbsp;
+  = link_to "上一级","/files_list?current_dir=#{CGI.escape(FileManager.get_parent_path(@dir))}"
+
+= form_tag({}) do 
+  = text_field_tag :dir_name
+  = hidden_field_tag :current_dir, @dir
+  = submit_tag "在当前目录下创建目录"
+
+%hr
+= form_tag({}, multipart: true) do 
+  = file_field_tag :file_name
+  = hidden_field_tag :current_dir, @dir
+  = submit_tag "上传文件到当前目录"
+
+%hr
+%div 
+  子目录：
+  %ul
+    - @dir_list.each do |d| 
+      %li 
+        = link_to d,"/files_list?current_dir=#{CGI.escape(@dir+d)}" 
+        &nbsp;&nbsp;
+        = link_to "删除", "/files_list?current_dir=#{CGI.escape(@dir)}&delete_dir=#{@dir+d}", method: :delete, data: { confirm: "Are you sure?" }
+
+  文件:
+  %ul
+    - @file_list.each do |f| 
+      %li
+        = link_to f,@dir.split('/').last.gsub('public','')+'/'+f.to_s
+        &nbsp;&nbsp;
+        = link_to "删除", "/files_list?current_dir=#{CGI.escape(@dir)}&delete_file=#{@dir+f}", method: :delete, data: { confirm: "Are you sure?" } 
