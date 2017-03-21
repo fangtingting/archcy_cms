@@ -18,6 +18,6 @@
 config/database.yml
 db/schema.rb
 config/qywx_token.yml
-/public/*
+/public/files
 Gemfile.lock
 config/ymls/qywx_token.yml
