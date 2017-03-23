@@ -5,7 +5,7 @@
   当前目录为: 
   = @dir
   &nbsp;&nbsp;
-  = link_to "上一级","/files_list?current_dir=#{CGI.escape(FileManager.get_parent_path(@dir))}"
+  = link_to "上一级","/files_list?current_dir=#{CGI.escape(Common::FileManager.get_parent_path(@dir))}"
 
 = form_tag({}) do 
   = text_field_tag :dir_name

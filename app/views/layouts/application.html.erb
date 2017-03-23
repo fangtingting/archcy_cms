@@ -10,16 +10,5 @@
 
   <%= yield %>
 
-  <script type="text/javascript">
-  //http://ricostacruz.com/nprogress/ 加载页面进度条
-  //https://github.com/rstacruz/nprogress
-  $(document).on('turbolinks:click', function() {
-    NProgress.start();
-  });
-  $(document).on('turbolinks:render', function() {
-    NProgress.done();
-    NProgress.remove();
-  });
-  </script>
 </body>
 </html>

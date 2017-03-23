@@ -1,11 +1,26 @@
 <script type="text/javascript" src="/javascripts/clipboard.min.js"></script>
 
-<%=Article.list_fields%>
 <div>
-  <p>clipboard.js实现复制黏贴</p>
-  <span style="cursor:pointer;" class="btn" title='点击复制号码' data-clipboard-text="号码" onclick="copy(this)">复制号码</span><span style="color:red;display: none;" id="zero_tip">已复制！</span>
+  <p>clipboard.js实现复制黏贴,表头浮动</p>
 </div>
 
+<%= will_paginate @articles%>
+
+<div id="scroll" style="width:100%;position:relative;clear: both">
+  <!-- 浮动表头 -->
+  <table id="box_title" class="order-table" width="100%" border='1' cellpadding='0' cellspacing='0' style="position:absolute;left:0;top:0;z-index:9;display: none;">
+    <%= content_tag(:tr,Article.list_fields.collect{|title| content_tag(:th,title)}.join.html_safe) %>
+  </table>
+  <table id="report" width='100%' border='1' cellpadding='0' cellspacing='0'>
+    <%= content_tag(:tr,Article.list_fields.collect{|title| content_tag(:th,title)}.join.html_safe) %>
+    <% @articles.each do |article| %>
+    <tr>
+      <td><%= article.title %></td>
+      <td><span style="cursor:pointer;" class="btn" title='点击复制' data-clipboard-text="<%=article.content%>" onclick="copy(this)"><%= truncate(article.content,length: 300) %></span><span style="color:red;display: none;">已复制！</span></td>
+    </tr>
+    <% end %>
+  </table>
+</div>
 
 
 <script type="text/javascript">
@@ -18,7 +33,28 @@ function copy(obj){
   setTimeout(function(){$(obj).next().hide()},500);
 
 }
+var scroll_box = $('#scroll'), box_title = $('#box_title');
+window.onload = function () {
+  mod_title_width();
+};
+window.onscroll = function () {
+  var d = document.body || document.documentElement;
+  var s_top = d.scrollTop, b_top = scroll_box.offset().top;
+  if (b_top < s_top) {
+    box_title.css({display: '', top: s_top - b_top})
+  } else {
+    box_title.css({display: 'none'})
+  }
+};
 
+function mod_title_width() {
+  var std_tr = $('#report tr:first');
+  var mod_tr = $('#box_title tr:first');
+  var len = std_tr.find('th').length;
+  for (var i = 1; i <= len; i++) {
+    mod_tr.find('th:nth-child(' + i + ')').width(std_tr.find('th:nth-child(' + i + ')').width())
+  }
+}
 </script>
 
 

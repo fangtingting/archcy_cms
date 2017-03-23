@@ -1,5 +1,5 @@
 # 企业微信api调用，具体用法参照bin/scripts/wx_test.rb
-class QyWechat
+class Common::QyWechat
 
   CORPID = "wxeb9c2ddbb4858794"
   CORPSECRET = "FynaaT3ybNYJygOL_Hr5n0qRBjnc05TPXlBC0bPmo_kbIaWSDEKi1SnqnmTIwDYL"

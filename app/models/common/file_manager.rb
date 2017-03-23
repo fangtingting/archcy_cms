@@ -1,5 +1,5 @@
 # 用于上传文件操作,获取文件目录,解压目录
-class FileManager
+class Common::FileManager
   # root_folder_path:public目录,file_exts:允许的文件格式,file_max_size:文件最大的size,file_name:返回文件名,file_chinese_name:文件中文名
   attr_accessor :root_folder_path,:file_exts, :file_max_size, :file_name,:file_chinese_name
 

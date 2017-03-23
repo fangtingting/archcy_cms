@@ -15,3 +15,4 @@
 //= require turbolinks
 //= require nprogress
 //= require ckeditor/init
+//= require common
