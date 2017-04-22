@@ -4,7 +4,6 @@ class ActiveRecord::Base
   belongs_to :updater, :class_name => "User", :foreign_key => "updated_by"
  
   def update
-  # should probably be update!
     return(super) unless auditable?
     self.updated_by=User.current_user.id if User.current_user
     super

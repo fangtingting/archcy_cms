@@ -1,0 +1,67 @@
+= form_for @article do |form|
+  = form.cktext_area :content, id: 'editor1', rows: 10, cols: 80, value: 'This is my textarea to be replaced with CKEditor.',contenteditable: true
+:javascript
+  window.onload=function(){
+  
+  CKEDITOR.on('instanceReady', function (e) {
+  
+    if(e.editor.document.$.addEventListener){
+      //监听CKEditor里面的document对象粘贴事件。 
+     e.editor.document.$.addEventListener('paste',Paste,false);
+     //监听CKEditor里面的document对象拖拽图片事件。 
+     e.editor.document.$.addEventListener('drop',Drag,false);
+   }
+  });
+  }
+  
+  function UploadFile(file){
+    // console.log(file);
+    var reader = new FileReader();
+    // 读取文件对象，将文件读取为DataUrl
+    reader.readAsDataURL(file);
+    //ajax上传图片,当文件读取成功时触发此事件
+    reader.onload = function(e) 
+    {
+      //this.result得到图片的base64 (可以用作即时显示)
+      // console.log(this.result);
+      var xhr = new XMLHttpRequest();
+      var fd  = new FormData();
+  
+      xhr.open('POST', '/ckeditor_upload_pic', true);
+      // 以test.png名字上传
+      fd.append('file', file,"test.png"); 
+      xhr.send(fd);
+      xhr.onload = function () 
+      {
+        var img = xhr.responseText;
+        // console.log(img); 
+        var element = CKEDITOR.dom.element.createFromHtml("<img src='"+img+"'>");
+        CKEDITOR.instances.editor1.insertElement( element );
+        // editor.append("<img src='"+img+"'>")  
+      }
+  
+    }
+  }
+  
+  
+  //查找box元素,检测当粘贴时候,
+  function Paste(e) {
+    console.log(e.target);
+    console.log(e.clipboardData);
+    //判断是否是粘贴图片
+    if (e.clipboardData && e.clipboardData.items && e.clipboardData.items[0] && e.clipboardData.items[0].type.indexOf('image') > -1) 
+    {
+      var file = e.clipboardData.items[0].getAsFile();
+      UploadFile(file);
+    }
+  };
+  
+  function Drag(e){
+    //防止浏览器的默认处理数据
+    e.preventDefault();
+    console.log(e.dataTransfer);
+    if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0] && e.dataTransfer.files[0].type.indexOf('image') > -1){
+      var file = e.dataTransfer.files[0];
+      UploadFile(file);
+    }
+  }

@@ -1,15 +1,4 @@
-class ArticlesController < ApplicationController
-
-  def index
-    params[:q] ||={}
-    @search = Article.search(params[:q])
-    @articles = @search.result.order("created_at desc").page(params[:page]).per_page(20)
-  end
-
-  def new
-    @article=Article.new
-  end
-
+class CommonController < ApplicationController
   # 获取当前目录下的文件及文件夹
   def files_list
     params[:current_dir] ||= "#{Rails.root.to_s}/public/files/" 
@@ -27,5 +16,4 @@ class ArticlesController < ApplicationController
     end
     @dir_list,@file_list=Common::FileManager.get_files(@dir)
   end
-
 end

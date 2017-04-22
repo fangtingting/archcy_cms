@@ -33,9 +33,11 @@ gem 'mini_magick'
 gem 'radius'
 # 分页
 gem 'will_paginate'
-# gem 'will_paginate-bootstrap'
+gem 'will_paginate-bootstrap'
 
-gem 'ckeditor'
+# 文本编辑
+# gem 'ckeditor'
+# gem 'rails_kindeditor'
 # gem 'oneapm_rpm'
 
 # 搜索表单
@@ -44,6 +46,7 @@ gem 'ransack'
 # 全文搜索
 gem 'sunspot'
 gem 'sunspot_rails'
+# redis缓存
 gem 'redis'
 
 # 操作excel
@@ -52,8 +55,12 @@ gem 'spreadsheet', '~> 1.0.3'
 gem 'rest-client'
 # gem 'aliyun-oss'
 
+# 表单操作
+gem "simple_form"
+
 gem  "minitest"
 gem  "zip"
+
 # 定时执行
 gem 'sidekiq'
 gem 'sidekiq-scheduler', '~> 2.0'
@@ -68,6 +75,9 @@ gem 'fullcalendar-rails'
 
 # 使用puma启动程序，注释掉就默认使用WEBrick启动
 gem 'puma'
+
+# 上传附件
+gem 'carrierwave'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

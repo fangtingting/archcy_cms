@@ -78,16 +78,16 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # 报错收邮件邮箱配置
-  # config.action_mailer.default_url_options = { host: 'cms.com' }
-  # config.action_mailer.perform_deliveries = true
-  # config.action_mailer.raise_delivery_errors = true
-  # config.action_mailer.delivery_method = :smtp
-  # config.action_mailer.smtp_settings = {
-  #   :address => "smtp.exmail.qq.com",
-  #   :port => 25,
-  #   :domain => "rccchina.com",
-  #   :authentication => :login,
-  #   :user_name => "system@rccchina.com",
-  #   :password => "EfiU771"
-  # }
+  config.action_mailer.default_url_options = { host: 'in4.rccchina.com' }
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address => "smtp.exmail.qq.com",
+    :port => 25,
+    :domain => "rccchina.com",
+    :authentication => :login,
+    :user_name => "system@rccchina.com",
+    :password => "EfiU771"
+  }
 end

@@ -14,5 +14,4 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require nprogress
-//= require ckeditor/init
 //= require common
