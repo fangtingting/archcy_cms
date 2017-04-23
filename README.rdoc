@@ -1,13 +1,11 @@
 config文件下的ymls存放一些配置文件
 
 <!-- 上传单个文件  -->
-<%= form_tag "/upload/", :multipart => true do %>
-  <!-- html写法-->
-  <!--     
+<%= form_tag "/upload/", :multipart => true do %>   
+  <!-- html写法 -->
   <input type="file" name="file">
   <input type="hidden" value="<%= @dir %>" name="current_dir">
   <input type="submit" name="submit" value="上传文件到当前目录"> 
-  -->
 
   <!-- rails代码 -->
   <%= file_field_tag "file" -%>
@@ -27,3 +25,11 @@ config文件下的ymls存放一些配置文件
   <%= hidden_field_tag(:current_dir, @dir) %>
   <%= submit_tag "上传文件到当前目录"%>
 <% end %>
+
+使用到的项目框架
+
+1、bootstrap：www.bootcss.com
+2、font-awesome(图标)：fontawesome.dashgame.com
+3、smartadmin：后台管理操作页面,smartdmin是基于bootstrap跟jquery的，使用smartadmin无法使用turbolinks(会导致js加载失败)
+4、clipboard：将页面内容复制到黏贴板
+5、nprogress.js：页面上会有加载条出现

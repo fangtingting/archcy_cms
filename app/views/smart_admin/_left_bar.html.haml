@@ -1,0 +1,42 @@
+%aside#left-panel
+  -#/ User info
+  .login-info
+    %span
+      -#/ User image size is adjusted inside CSS, it should stay as it
+      %img.online{alt: "me", src: "http://cheverehosting.com/img/avatars/sunny.png"}/
+      %a#show-shortcut{href: "javascript:void(0);"}
+        %span tingting.fang
+        %i.fa.fa-angle-down
+  -#/ end user info
+  -#/
+  -#  NAVIGATION : This navigation is also responsive
+  -#
+  -#  To make this navigation dynamic please make sure to link the node
+  -#  (the reference to the nav > ul) after page load. Or the navigation
+  -#  will not initialize.
+  %nav
+    -#/
+    -#  NOTE: Notice the gaps after each icon usage <i></i>..
+    -#  Please note that these links work a bit different than
+    -#  traditional hre="" links. See documentation for details.
+    %ul
+      %li
+        %a{href: "/", title: "Dashboard"}
+          %i.fa.fa-lg.fa-fw.fa-home
+          %span.menu-item-parent 首页
+      %li
+        %a{href: "javascript:void(0)",title: "IT工具"}
+          %i.fa.fa-lg.fa-fw.fa-inbox 
+          %span.menu-item-parent IT工具
+        %ul
+          %li
+            %a{href: "#",title: "模板模型"}
+              %i.fa.fa-lg.fa-fw.fa-inbox 
+              %span.menu-item-parent 模板模型
+
+
+  %span.minifyme
+    %i.fa.fa-arrow-circle-left.hit
+-#/ END NAVIGATION
+
+

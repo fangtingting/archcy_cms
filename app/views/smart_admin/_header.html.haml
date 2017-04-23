@@ -1,0 +1,84 @@
+#header
+  #logo-group
+    %span#logo
+      %img{alt: "SmartAdmin" , src: "http://cheverehosting.com/img/logo.png", style: "margin-left:20px" }/
+    %span#activity.activity-dropdown
+      %i.fa.fa-user
+      %b.badge= 21
+    .ajax-dropdown
+      -#/ the ID links are fetched via AJAX to the ajax container "ajax-notifications"
+      .btn-group.btn-group-justified{"data-toggle" => "buttons"}
+        %label.btn.btn-default
+          %input{id: "/base/notifications", name: "activity", type: "radio"}/
+          系统通知
+        %label.btn.btn-default
+          %input{id: "/mail.html", name: "activity", type: "radio"}/
+          用户消息
+        %label.btn.btn-default
+          %input{id: "/tasks.html", name: "activity", type: "radio"}/
+          任务
+      -#/ notification content
+      .ajax-notifications.custom-scroll
+        .alert.alert-transparent
+          %h4 点击消息类别
+          请点击消息类别查看消息列表……
+        %i.fa.fa-lock.fa-4x.fa-border
+      #div{style: "text-align:center;"}
+        = link_to "", method: :delete  do
+          %button{class: "btn btn-xs btn-default",style:"width:150px;"}
+            退出登录
+      -#/ end notification content
+      -#/ footer: refresh area
+      -#暂时取消假的刷新按钮！
+        %span
+          最后刷新时间: 2015-01-28 9:43AM
+          %button.btn.btn-xs.btn-default.pull-right{"data-loading-text" => "<i class='fa fa-refresh fa-spin'></i> Loading...", :type => "button"}
+            %i.fa.fa-refresh
+      / end footer
+    / END AJAX-DROPDOWN
+  / pulled right: nav area
+  .pull-right
+    -#/ collapse menu button
+    #hide-menu.btn-header.pull-right
+      %span
+        %a{href: "javascript:void(0);", title: "Collapse Menu"}
+          %i.fa.fa-reorder
+    -#/ end collapse menu
+    -#/ logout button
+    #logout.btn-header.transparent.pull-right
+      %span
+        = link_to "", method: :delete, title: "登出" do
+          %i.fa.fa-sign-out
+    -#/ end logout button
+    -#/ search mobile button (this is hidden till mobile view port)
+    #search-mobile.btn-header.transparent.pull-right
+      %span
+        %a{href: "javascript:void(0)", title: "Search"}
+          %i.fa.fa-search
+    -#/ end search mobile button
+    -#/ input: search field
+    %form.header-search.pull-right{action: "#search.html"}
+      %input#search-fld{placeholder: "Search", type: "text"}/
+      %button{type: "submit"}
+        %i.fa.fa-search
+      %a#cancel-search-js{href: "javascript:void(0);", title: "Cancel Search"}
+        %i.fa.fa-times
+    %ul.header-dropdown-list.hidden-xs
+      %li
+        %a.dropdown-toggle{hre: "#", "data-toggle" => "dropdown"}
+          %span 快速搜索
+          %i.fa.fa-angle-down
+        %ul.dropdown-menu.pull-right
+          %li.active
+            %a{href: "#"} 项目
+          %li
+            %a{href: "#"} 公司
+          %li
+            %a{href: "#"} 联系人
+          %li
+            %a{href: "#"} CRM公司
+    -#/ end input: search field
+-#  / end pulled right: nav area
+-#/ END HEADER
+-#/ Left panel : Navigation area
+-#/ Note: This width of the aside area can be adjusted through LESS variables

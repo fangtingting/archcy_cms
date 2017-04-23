@@ -1,0 +1,38 @@
+-#  SHORTCUT AREA : With large tiles (activated via clicking user name tag)
+-#  Note: These tiles are completely responsive,
+-#  you can add as many as you like
+#shortcut
+  %ul
+    %li
+      %a.jarvismetro-tile.big-cubes.bg-color-blue{href: "#inbox.html"}
+        %span.iconbox
+          %i.fa.fa-th.fa-4x
+          %span
+            项目
+            %span.label.pull-right.bg-color-darken 14
+    %li
+      %a.jarvismetro-tile.big-cubes.bg-color-orangeDark{href: "#calendar.html"}
+        %span.iconbox
+          %i.fa.fa-dollar.fa-4x
+          %span 订单列表
+    %li
+      %a.jarvismetro-tile.big-cubes.bg-color-purple{href: "#gmap-xml.html"}
+        %span.iconbox
+          %i.fa.fa-group.fa-4x
+          %span 员工管理
+    %li
+      %a.jarvismetro-tile.big-cubes.bg-color-pinkDark{href: "/dashboard/user_info"}
+        %span.iconbox
+          %i.fa.fa-user.fa-4x
+          %span 个人信息
+    %li
+      %a.jarvismetro-tile.big-cubes.bg-color-orangeDark{href: "/dashboard/change_pwd"}
+        %span.iconbox
+          %i.fa.fa-key.fa-4x
+          %span{style: 'font-size:10px;'} 修改密码
+    %li
+      = link_to "", method: :delete,class:"jarvismetro-tile big-cubes bg-color-blue" do
+        %span.iconbox
+          %i.fa.fa-sign-out.fa-4x
+          %span 退出登录
+-#/ END SHORTCUT AREA
