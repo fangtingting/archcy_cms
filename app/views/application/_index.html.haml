@@ -1,0 +1,17 @@
+- if @model_partial.js_file
+  %link{href: "#{@model_partial.js_file.current_path}", media: "screen", rel: "stylesheet", type: "text/css", "data-turbolinks-track" => "true"} 
+- if @model_partial.css_file
+  %script{src: "#{@model_partial.css_file.current_path}","data-turbolinks-track" => 'true'}
+
+.panel.panel-default
+  = render partial: "application/header"
+  .panel-body
+    = render partial: @model_partial.search_partial if @model_partial.search_partial
+    = render partial: "application/page" if @model_partial.is_page
+    - if @model_partial.table_header
+      %table.table.table-striped.table-bordered.table-hover
+        %tr
+          = @model_partial.table_header.split('|').collect{|e| content_tag(:th, e)}.join('').html_safe 
+        = render partial: @model_partial.custom_partial,collection: @these
+    - else
+      = render partial: @model_partial.custom_partial

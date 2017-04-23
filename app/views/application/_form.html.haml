@@ -1,0 +1,9 @@
+- if @model_partial.js_file
+  %link{href: "#{@model_partial.js_file.current_path}", media: "screen", rel: "stylesheet", type: "text/css", "data-turbolinks-track" => "true"} 
+- if @model_partial.css_file
+  %script{src: "#{@model_partial.css_file.current_path}","data-turbolinks-track" => 'true'}
+
+.panel.panel-default
+  = render partial: "application/header"
+  .panel-body
+    = render partial: @model_partial.custom_partial

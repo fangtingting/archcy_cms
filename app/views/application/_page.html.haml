@@ -1,0 +1,7 @@
+.row
+  .col-sm-6
+    .dataTables_info
+      = page_entries_info @these
+  .col-sm-6
+    .dataTables_paginate.paging_bootstrap.pull-right
+      = will_paginate @these, renderer: BootstrapPagination::Rails
