@@ -13,14 +13,18 @@ class ApplicationController < ActionController::Base
     render_shared
   end
 
+  def destroy
+    @this.destroy
+  end
+
   def render_shared
-    render "appliction/_#{ @model_partial.main_layout}",layout: @model_partial.is_layout if @model_partial
+    render "application/_#{ @model_partial.main_layout}",layout: @model_partial.is_layout if @model_partial.present?
   end
 
   def set_model_partial
     @model_partial = ModelPartial.find_by_controller_and_action(params[:controller],params[:action])
-    @html_title = @model_partial.html_title if @model_partial
-    @this = @model_partial ? (params[:id] ? @model_partial.model_class.classify.constantize.find_by_id(params[:id]) : @model_partial.model_class.classify.constantize.new) : nil 
+    @html_title = @model_partial.html_title if @model_partial.present?
+    @this = @model_partial.present? ? (params[:id] ? @model_partial.model_class.classify.constantize.find_by_id(params[:id]) : @model_partial.model_class.classify.constantize.new) : nil 
   end
   
   # def process_action *args

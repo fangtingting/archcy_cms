@@ -1,9 +1,24 @@
-class ModelPartialController < ApplicationController
+class ModelPartialsController < ApplicationController
   def index
-    @these = ModelPartial.includes(:updator).page(params[:page]).per_page(20)
+    @these = ModelPartial.page(params[:page]|| 1).per_page(20)
+    render_shared
   end
 
-  def new
-    @this = ModelPartial.new
+  def create
+    @this = ModelPartial.new(params[:model_partial].permit!)
+    if @this.save
+      redirect_to model_partials_path
+    else
+      render :new
+    end
+  end
+
+  def update
+    @this = ModelPartial.find_by_id(params[:id])
+    if @this.update(params[:model_partial].permit!)
+      redirect_to model_partials_path
+    else
+      render :edit
+    end
   end
 end

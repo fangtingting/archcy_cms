@@ -6,6 +6,7 @@ class CreateModelPartials < ActiveRecord::Migration
       t.string :model_class
       t.string :main_layout
       t.string :html_title
+      t.string :head_partial
       t.string :search_partial
       t.boolean :is_page,default: true
       t.boolean :is_layout,default: true

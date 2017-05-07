@@ -1,0 +1,12 @@
+%tr
+  %td= list_row.controller
+  %td= list_row.action
+  %td= list_row.model_class
+  %td= list_row.main_layout
+  %td= list_row.html_title
+  %td= list_row.custom_partial
+  %td= t(list_row.is_layout.to_s)
+  %td= t(list_row.is_page.to_s)
+  %td= t(list_row.is_checkbox.to_s)
+  %td
+    = link_to "编辑",edit_model_partial_path(list_row.id)

@@ -1,20 +1,18 @@
-= simple_form_for(@this,:wrapper=> :horizontal, :html=>{:class=>"form-horizontal", :role=>"form", id: 'result_form'}, :defaults=>{ input_html: { class: 'col-md-12' },
-                  label_html: { class: 'col-md-2 control-label no-padding-right' }}) do |f|
+= simple_form_for(@this,html:{class: "form-horizontal", role: "form", id: 'result_form'}) do |f|
   = f.error_notification
-  %table{style: 'width: 100%',cellpadding: 5,id: 'form1'}
-    %tr
-      %th controller
-      %td= f.input :controller
-    %tr
-      %th action
-      %td= f.input :action
-    %tr
-      %th model_class
-      %td= f.input :model_class
-    %tr
-      %th main_layout
-      %td= f.input :main_layout,as: :select,collection: ModelPartial::MAINLAYOUT
-    %tr
-      %td{colspan: 2}
-        = f.submit "保存",class: "btn btn-primary"
-        = link_to '取消',gt_questionnaires_path, class: "btn btn-primary"
+  = f.input :controller
+  = f.input :action
+  = f.input :model_class
+  = f.input :main_layout,as: :select,collection: ModelPartial::MAINLAYOUT
+  = f.input :html_title
+  = f.input :head_partial
+  = f.input :search_partial
+  = f.input :custom_partial
+  = f.input :is_layout
+  = f.input :is_page
+  = f.input :is_checkbox
+  = f.input :table_header,input_html: { class: 'col-sm-12' }
+  = f.input :js_file
+  = f.input :css_file
+  = f.submit "保存",class: "btn btn-primary"
+  = link_to '取消',model_partials_path, class: "btn btn-primary"

@@ -1,0 +1,33 @@
+zh-CN:
+  will_paginate:
+    previous_label: "&lt;"
+    next_label: "&gt;"
+    page_gap: "&hellip;"
+
+    page_entries_info:
+      single_page:
+        zero:  "尚无数据"
+        one:   "仅一条数据"
+        other: "所有%{count}条数据"
+      single_page_html:
+        zero:  "尚无数据"
+        one:   "仅 <b>1</b> 条数据"
+        other: "所有 <b>&nbsp;%{count}</b> 条数据"
+
+      multi_page: "第%{from}-%{to}条，总计%{count}条数据."
+      multi_page_html: "总计<b>%{count}</b>条，当前显示第<b>%{from}-%{to}</b>条数据."
+
+    # models:
+    #   entry:
+    #     zero:  entries
+    #     one:   entry
+    #     few:   entries
+    #     other: entries
+
+    # line_item:
+    #   page_entries_info:
+    #     single_page:
+    #       zero:  "Your shopping cart is empty"
+    #       one:   "Displaying one item in your cart"
+    #       other: "Displaying all %{count} items"
+    #     multi_page: "Displaying items %{from} - %{to} of %{count} in total"

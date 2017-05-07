@@ -1,0 +1,38 @@
+zh-CN:
+  simple_form:
+    "yes": '是'
+    "no": '否'
+    required:
+      text: '必填'
+      mark: '*'
+      # You can uncomment the line below if you need to overwrite the whole required html.
+      # When using html, text and mark won't be used.
+      # html: '<abbr title="required">*</abbr>'
+    error_notification:
+      default_message: "保存出错！请检查下面的提示:"
+    # Labels and hints examples
+    # labels:
+    #   defaults:
+    #     password: 'Password'
+    #   user:
+    #     new:
+    #       email: 'E-mail to sign in.'
+    #     edit:
+    #       email: 'E-mail.'
+    # hints:
+    #   defaults:
+    #     username: 'User name to sign in.'
+    #     password: 'No special characters, please.'
+    labels:
+      model_partial:
+        is_layout: "是否加载layout"
+        is_page: "是否分页"
+        is_checkbox: "是否显示多选框"
+        js_file: "js文件存放路径"
+        css_file: "css文件存放路径"
+        table_header: "表头"
+        custom_partial: "自定义模板"
+        search_partial: "搜索模板"
+        head_partial: "自定义head模板"
+        html_title: "标题"
+        main_layout: "主模板"
