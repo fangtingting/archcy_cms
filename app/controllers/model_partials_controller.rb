@@ -14,7 +14,6 @@ class ModelPartialsController < ApplicationController
   end
 
   def update
-    @this = ModelPartial.find_by_id(params[:id])
     if @this.update(params[:model_partial].permit!)
       redirect_to model_partials_path
     else

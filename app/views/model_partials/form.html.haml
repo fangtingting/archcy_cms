@@ -1,0 +1,22 @@
+.panel.panel-default
+  .panel-heading
+    %a.btn-popover-show{'data-content' => "显示内容...",'data-placement'=>'top' , 'data-toggle' => 'popover', 'data-trigger' => 'hover',  :tabindex => '0'}显示
+  .panel-body
+    = simple_form_for(@this,html:{class: "form-horizontal", role: "form", id: 'result_form'}) do |f|
+      = f.error_notification
+      = f.input :controller
+      = f.input :action
+      = f.input :model_class
+      = f.input :main_layout,as: :select,collection: ModelPartial::MAINLAYOUT
+      = f.input :html_title
+      = f.input :head_partial
+      = f.input :search_partial
+      = f.input :custom_partial
+      = f.input :is_layout
+      = f.input :is_page
+      = f.input :is_checkbox
+      = f.input :table_header,input_html: { class: 'col-sm-12' }
+      = f.input :js_file
+      = f.input :css_file
+      = f.submit "保存",class: "btn btn-primary"
+      = link_to '取消',model_partials_path, class: "btn btn-primary"

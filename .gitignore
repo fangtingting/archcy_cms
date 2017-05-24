@@ -22,3 +22,4 @@ config/qywx_token.yml
 /public/uploads
 Gemfile.lock
 config/ymls/qywx_token.yml
+config/wechat_jsapi_ticket.yml

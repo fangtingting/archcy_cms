@@ -4,18 +4,32 @@ class ApplicationController < ActionController::Base
   layout 'admin'
   protect_from_forgery with: :exception
   before_action :set_model_partial
+  before_action :set_this,only: [:show,:new,:edit,:create,:update,:delete]
+
+  def model_class
+    params[:controller].camelize.classify.constantize
+  end
+
+  def model_params
+    params[:controller].gsub('/','_').singularize
+  end
+
+  def set_this
+    @this = params[:id].present? ? model_class.find_by_id(params[:id]) : model_class.new
+  end
 
   def new
-    render_shared
+    render "form"
   end
 
   def edit
-    render_shared
+    render "form"
   end
 
   def destroy
     @this.destroy
   end
+
 
   def render_shared
     render "application/_#{ @model_partial.main_layout}",layout: @model_partial.is_layout if @model_partial.present?

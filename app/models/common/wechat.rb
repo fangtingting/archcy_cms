@@ -7,7 +7,7 @@ class Common::Wechat
 
   def initialize(args={})
     if File.exist?(Rails.root.to_s + '/config/wechat_jsapi_ticket.yml')
-      tmp = YAML.load_file(RAILS_ROOT + '/config/wechat_jsapi_ticket.yml')
+      tmp = YAML.load_file(Rails.root.to_s + '/config/wechat_jsapi_ticket.yml')
       if (tmp["expires_time"]+7200) < Time.now
         set_jsapi_ticket
       else
